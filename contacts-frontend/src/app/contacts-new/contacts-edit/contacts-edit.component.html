@@ -1,0 +1,21 @@
+<div>
+  <div style="display: flex; flex-direction: row">
+    <button style="margin-left: 10px; width: 150px; height: 50px" (click)="save()" mat-raised-button>Сохранить</button>
+    <button style="margin-left: 10px; width: 150px; height: 50px" (click)="cancel()" mat-raised-button>Отмена</button>
+  </div>
+  <div style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline" style="max-width: 500px">
+      <mat-label>Имя</mat-label>
+      <input matInput [(ngModel)]="item.name">
+    </mat-form-field>
+    <mat-form-field style="max-width: 500px" appearance="outline">
+      <mat-label>Телефон</mat-label>
+      <input matInput [(ngModel)]="item.phone" type="tel">
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="max-width: 500px">
+      <mat-label>Почта</mat-label>
+      <input matInput [(ngModel)]="item.email" type="email">
+    </mat-form-field>
+  </div>
+
+</div>

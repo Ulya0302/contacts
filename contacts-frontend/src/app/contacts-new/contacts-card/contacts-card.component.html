@@ -1,0 +1,20 @@
+<div style="display: flex; flex-direction: row; text-align: center;  margin-top: 5px">
+  <div style="display: flex; flex-direction: column;  margin-left: 45px">
+    <div class="name">{{selectedCard.name}}</div>
+    <div class="id">ID: {{selectedCard.id}}</div>
+  </div>
+  <div style="display: flex; flex-direction: column; margin-left: 15px">
+    <div class="phone">Телефон: {{selectedCard.phone}}</div>
+    <div class="email">Почта: <a [href]="getLink(selectedCard.email)">{{selectedCard.email}}</a></div>
+  </div>
+  <div style="display: flex; flex-direction: column">
+    <button mat-icon-button color="primary" (click)="edit()">
+      <mat-icon color="primary">edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete()" color="primary">
+      <mat-icon color="primary">delete</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-divider></mat-divider>
+

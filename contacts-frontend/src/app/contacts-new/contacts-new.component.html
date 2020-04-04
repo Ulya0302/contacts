@@ -1,0 +1,38 @@
+<div>
+  <div style="display: flex; flex-direction: row">
+    <button mat-raised-button style="width: 180px; height: 54px" (click)="create()">Добавить</button>
+    <mat-form-field style="margin-left: 10px" appearance="outline">
+      <input matInput placeholder="Фильтр...." [(ngModel)]="nameFilter" (input)="sortChange()"/>
+    </mat-form-field>
+    <mat-form-field style="margin-left: 10px" appearance="outline">
+      <mat-label>Сортировать по</mat-label>
+      <mat-select placeholder="Сортировать по..." [(value)]="sortCol" (selectionChange)="sortChange()">
+        <mat-option value="id">ID</mat-option>
+        <mat-option value="name">Имени</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="margin-left: 10px" appearance="outline">
+      <mat-label>Порядок:</mat-label>
+      <mat-select placeholder="" [(value)]="sorDir" (selectionChange)="sortChange()">
+        <mat-option value="ASC">По возрастанию</mat-option>
+        <mat-option value="DESC">По убыванию</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-paginator style="float: right" [length]="totalLength"
+                   showFirstLastButtons="true"
+                   [pageSizeOptions]="pageSizeOptions">
+    </mat-paginator>
+    <div>
+      Описание: простое приложение, использующее взаимодействие с сервером. <br/>
+      Данные по карточкам получаются с бэка. <br/>
+      Есть возможность сортировать данные <br/>
+      Есть возможность создать, изменить и удалить карточку <br/>
+      Все изменения сохраняются в базе PostgreSQL <br/>
+      Харламова ПИ3-1 <br/>
+    </div>
+  </div>
+  <div>
+    <app-contacts-card *ngFor="let card of data" [selectedCard]="card" (cardChange)="updateData()">
+    </app-contacts-card>
+  </div>
+</div>

@@ -19,6 +19,7 @@ public class ContactService {
     private final ContactRepository contactRepository;
     private final ContactMapper contactMapper;
 
+    @Transactional(readOnly = true)
     public Page<ContactDto> getContacts(@RequestParam("filter") String contactFilter, PagingParam pagingParam) {
         Predicate predicateFor = ContactPredicateBuilder.getPredicateFor(contactFilter);
         var pageContacts = contactRepository.findAll(predicateFor, PageUtils.toPageRequest(pagingParam));
@@ -47,5 +48,12 @@ public class ContactService {
     @Transactional
     public void deleteContact(Long id) {
         contactRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public ContactDto getContact(Long id) {
+        var contact = contactRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(Contact.class, id));
+        return contactMapper.map(contact);
     }
 }

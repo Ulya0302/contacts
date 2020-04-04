@@ -2,9 +2,11 @@ package ru.finashka.contacts.feature.contact;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class ContactDto {
     private Long id;
     private String name;

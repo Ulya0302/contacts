@@ -1,0 +1,18 @@
+<p>Контакты</p>
+<div>
+  <pbl-ngrid #table blockUi matSort
+             usePagination
+             vScrollAuto
+             wheelMode="blocking"
+             cellTooltip
+             class="pbl-ngrid-cell-ellipsis pbl-ngrid-header-cell-ellipsis"
+             [dataSource]="ds" [columns]="columns">
+    <pbl-ngrid-drag-resize *pblNgridCellResizerRef="let ctx" [context]="ctx" [grabAreaWidth]="8">
+      <span class="pbl-ngrid-column-resizer-handle"></span>
+    </pbl-ngrid-drag-resize>
+    <span *pblNgridCellDraggerRef="let ctx" [pblNgridColumnDrag]="ctx"
+          cdkDragRootElementClass="cdk-drag column-reorder-handle"></span>
+    <div *pblNgridCellDef="'*'; value as value;">{{value}}</div>
+    <div *pblNgridHeaderCellDef="'*'; col as col;">{{col.label}}</div>
+  </pbl-ngrid>
+</div>
