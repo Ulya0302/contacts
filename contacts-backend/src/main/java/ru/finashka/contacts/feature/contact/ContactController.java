@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.finashka.contacts.shared.ListResponse;
-import ru.finashka.contacts.shared.Response;
+import ru.finashka.contacts.shared.dto.PagedListResponse;
+import ru.finashka.contacts.shared.dto.PagingParam;
+import ru.finashka.contacts.shared.dto.Response;
 
 @RestController
 @RequestMapping("/api/contacts")
@@ -20,9 +22,9 @@ public class ContactController {
     private final ContactService contactService;
 
     @GetMapping
-    public ListResponse<ContactDto> getContacts(ContactFilter contactFilter) {
-        var contacts = contactService.getContacts(contactFilter);
-        return new ListResponse<>(contacts);
+    public PagedListResponse<ContactDto> getContacts(@RequestParam("filter") String contactFilter, PagingParam pagingParam) {
+        var page = contactService.getContacts(contactFilter, pagingParam);
+        return new PagedListResponse<>(page);
     }
 
     @PostMapping

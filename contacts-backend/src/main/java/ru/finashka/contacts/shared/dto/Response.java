@@ -1,4 +1,4 @@
-package ru.finashka.contacts.shared;
+package ru.finashka.contacts.shared.dto;
 
 import lombok.Getter;
 import lombok.Setter;
