@@ -24,7 +24,7 @@ public class ContactController {
     private final ContactService contactService;
 
     @GetMapping
-    public PagedListResponse<ContactDto> getContacts(@RequestParam("filter") String contactFilter, PagingParam pagingParam) {
+    public PagedListResponse<ContactDto> getContacts(@RequestParam(value = "filter", defaultValue = "") String contactFilter, PagingParam pagingParam) {
         var page = contactService.getContacts(contactFilter, pagingParam);
         return new PagedListResponse<>(page);
     }

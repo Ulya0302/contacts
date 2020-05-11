@@ -10,6 +10,7 @@
     <modules>
         <module>contacts-backend</module>
         <module>contacts-frontend</module>
+        <module>contacts-frontend-vue</module>
     </modules>
 
     <dependencyManagement>

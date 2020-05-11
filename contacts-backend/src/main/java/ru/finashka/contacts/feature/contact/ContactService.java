@@ -10,6 +10,7 @@ import ru.finashka.contacts.shared.dto.PagingParam;
 import ru.finashka.contacts.shared.persistent.Page;
 import ru.finashka.contacts.shared.utils.PageUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,7 @@ public class ContactService {
     @Transactional
     public ContactDto createContact(ContactDto contactDto) {
         var contact = contactMapper.map(contactDto);
+        contact.setCreatedDate(LocalDateTime.now());
         return contactMapper.map(contactRepository.save(contact));
     }
 
